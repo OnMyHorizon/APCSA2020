@@ -15,11 +15,6 @@ public class MilesPerHour
 {
 	private double distance, hours, minutes;
 	private double mph = 0;
-
-	public MilesPerHour()
-	{
-	}
-
 	public MilesPerHour(int dist, int hrs, int mins)
 	{
 	}
