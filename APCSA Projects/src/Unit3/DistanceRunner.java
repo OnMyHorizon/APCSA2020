@@ -15,14 +15,15 @@ public class DistanceRunner
 {
 	public static void main( String[] args )
 	{
+		Distance Distance = new Distance(0,0,0,0);
 		Distance.setCoordinates(1,1,2,1);
 		Distance.calcDistance();
-		Distance.print();
+		System.out.println(Distance);
 		Distance.setCoordinates(1,1,-2,2);
 		Distance.calcDistance();
-		Distance.print();
+		System.out.println(Distance);
 		Distance.setCoordinates(1,1,0,0);
 		Distance.calcDistance();
-		Distance.print();
+		System.out.println(Distance);
 	}
 }

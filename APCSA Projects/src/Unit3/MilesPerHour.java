@@ -13,6 +13,7 @@ import static java.lang.Math.*;
 
 public class MilesPerHour
 {
+	//define these as doubles so you can divide by 60 later, otherwise you'll get the you can't divide by 0 error
 	private double distance, hours, minutes;
 	private double mph = 0;
 	public MilesPerHour(int dist, int hrs, int mins)
@@ -33,13 +34,14 @@ public class MilesPerHour
 		}
 		else if (minutes == 0 && hours != 0) {
 			mph = distance/hours;
-		}else {
+		}
+		else if (minutes != 0 && hours == 0){
 			mph = distance/(minutes/60);
 		}
 		
 	}	
 	public String toString()
 	{
-		return ""+(int)distance +" miles in "+(int)hours+" hours and "+(int)minutes+" minutes= "+Math.round(mph)+" miles per hour.";
+		return ""+(int)distance +" miles in "+(int)hours+" hours and "+(int)minutes+" minutes = "+Math.round(mph)+" MPH.";
 	}
 }
