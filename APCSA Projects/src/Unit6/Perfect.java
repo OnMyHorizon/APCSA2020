@@ -22,6 +22,7 @@ public class Perfect
 
 	public boolean isPerfect()
 	{
+		sum =0;
 		for (int i = 1; i < number; i++) {
 			if (number % i == 0) {
 				sum = sum + i;
@@ -29,13 +30,12 @@ public class Perfect
 		}
 		if (sum == number) {
 			return true;
-		}else {
-			return false;
 		}
+		return false;
 	}
 
 	public String toString() {
-		if (sum == number) {
+		if (isPerfect()) {
 			return number + " is perfect.";
 		}
 		return number+" is not perfect.";
