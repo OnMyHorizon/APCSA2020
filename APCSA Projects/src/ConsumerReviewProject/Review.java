@@ -20,7 +20,7 @@ public class Review {
   
   static{
     try {
-      Scanner input = new Scanner(new File("cleanSentiment.csv"));
+      Scanner input = new Scanner(new File("src/ConsumerReviewProject/cleanSentiment.csv"));
       while(input.hasNextLine()){
         String[] temp = input.nextLine().split(",");
         sentiment.put(temp[0],Double.parseDouble(temp[1]));
@@ -35,7 +35,7 @@ public class Review {
   
   //read in the positive adjectives in postiveAdjectives.txt
      try {
-      Scanner input = new Scanner(new File("positiveAdjectives.txt"));
+      Scanner input = new Scanner(new File("src/ConsumerReviewProject/positiveAdjectives.txt"));
       while(input.hasNextLine()){
         String temp = input.nextLine().trim();
         System.out.println(temp);
@@ -49,7 +49,7 @@ public class Review {
  
   //read in the negative adjectives in negativeAdjectives.txt
      try {
-      Scanner input = new Scanner(new File("negativeAdjectives.txt"));
+      Scanner input = new Scanner(new File("src/ConsumerReviewProject/negativeAdjectives.txt"));
       while(input.hasNextLine()){
         negAdjectives.add(input.nextLine().trim());
       }
@@ -68,7 +68,7 @@ public class Review {
   {  
     String temp = "";
     try {
-      Scanner input = new Scanner(new File(fileName));
+      Scanner input = new Scanner(new File("src/ConsumerReviewProject/"+fileName));
       
       //add 'words' in the file to the string, separated by a single space
       while(input.hasNext()){
@@ -146,27 +146,22 @@ public class Review {
       return randomNegativeAdj();
     }
   }
-
-/** Activity 2: totalSentiment()
-  * Write the code to total up the sentimentVals of each word in a review.
- */
   public static double totalSentiment(String filename)
   {
-    // read in the file contents into a string using the textToString method with the filename
-
-    // set up a sentimentTotal variable
-	double sentimentTotal = 0;
-    // loop through the file contents 
-
-       // find each word
-       // add in its sentimentVal
-       // set the file contents to start after this word
-   
-   
-
-
-
-   return sentimentTotal; 
+	  double sentimentTotal = 0;
+      String word = "";
+      String reviewText = textToString(filename);
+      for (int i = 0; i < reviewText.length(); i++)
+      {
+        if (reviewText.substring(i, i+1).equals(" ") || i + 1 == reviewText.length() ||reviewText.substring(i, i+1).equals("*"))
+         {
+            sentimentTotal += sentimentVal(word);
+            word = "";
+         }else{
+            word += reviewText.substring(i, i+1);
+         }
+      }
+      return sentimentTotal;
   }
 
 
@@ -175,15 +170,60 @@ public class Review {
   */
   public static int starRating(String filename)
   {
+	double sentiment = totalSentiment(filename);
     // call the totalSentiment method with the fileName
 
     // determine number of stars between 0 and 4 based on totalSentiment value 
     int stars = 0;
     // write if statements here
-
-
-  
-    // return number of stars
+    if (sentiment < 0) {
+    	stars = 1;
+    }
+    else if (sentiment < 5) {
+    	stars = 2;
+    }
+    else if (sentiment < 10) {
+    	stars = 3;
+    }
+    else if (sentiment < 15) {
+    	stars = 4;
+    }else {
+    	stars = 0;
+    }
     return stars; 
   }
+  
+  public static String fakeReview(String fileName, boolean positive) {
+	  String word = "";
+	  String reviewText = textToString(fileName);
+	  String newReview = "";
+	  for (int i = 0; i < reviewText.length(); i++)
+      {
+          if (reviewText.substring(i, i+1).equals(" ") || i == reviewText.length() -1){
+        	  //adjective detection
+              if (word.startsWith("*"))
+              {
+                  String updatedAdjective = "";
+                  //in case of multiple
+                  while (updatedAdjective.equals(""))
+                	  if (positive == true) {
+                		  updatedAdjective = randomPositiveAdj();
+                	  }else {
+                		  updatedAdjective = randomNegativeAdj();
+                	  }
+                  newReview += updatedAdjective + getPunctuation(word) + " ";
+                  word = "";
+              }
+              if (i == reviewText.length() -1)
+                  word += reviewText.substring(i, i+1);
+              else {
+                  newReview += word + " ";
+                  word = "";
+              }
+          }
+          else
+              word += reviewText.substring(i, i+1);
+      }
+      return newReview;
+    }
 }
