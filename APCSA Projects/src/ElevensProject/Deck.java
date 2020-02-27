@@ -14,28 +14,37 @@ public class Deck {
 	public static String[] SUITS = "CLUBS HEARTS DIAMONDS SPADES".split(" ");
 	public static String[] FACE = "ACE TWO THREE FOUR FIVE SIX SEVEN EIGHT NINE TEN JACK QUEEN KING".split(" ");
 	private List<Card> cards;
-	private int top;
-
+	private Card top;
+	private int size;
    //make a Deck constructor
    	//refer cards to new ArrayList
    	//set top to the top of the deck 51
 	public Deck () {
+		cards = new ArrayList<Card>();
 		for (int i = 0; i <= 3; i++) {
 			for (int j = 0; j <= 12; j ++) {
-				int point = j;
+				int point = j+1;
 				if (point > 10)
 					point = 10;
-				Card card = new Card (FACE[j], SUITS[i], point);
-				cards.add(card);
+				cards.add(new Card (FACE[j], SUITS[i], point));
 			}
 		}
-		System.out.println(cards);
+		size = cards.size();
+		top = cards.get(size-1);
 	}
-	
-	public String deaCard() {
-		return "";
+	public boolean isEmpty() {
+		if (cards.size() ==0)
+			return true;
+		return false;
 	}
-   	
+	public Card dealCard() {
+		if (size < 0) {
+			return null;
+		}
+		top = cards.get(size-1);
+		size --;
+		return top;
+	}
    	//loop through all suits
    		//loop through all faces 1 to 13
    			//add a new TwentyOneCard to the deck
@@ -44,8 +53,10 @@ public class Deck {
    //make a dealCard() method that returns the top card
    
    //write a shuffle() method
-	public String shuffle() {
-		return "";
+	public List shuffle() {
+		Collections.shuffle(cards);
+		size = cards.size();
+		return cards;
 	}
    	//use Colletions.shuffle
    	//reset the top card 
