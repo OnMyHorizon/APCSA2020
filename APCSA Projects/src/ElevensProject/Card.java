@@ -13,6 +13,7 @@ public class Card
 		//int face
 	private String cardSuit;
 	private String value;
+	private int intValue;
 	private int point;
 	
   	//constructors
@@ -21,10 +22,15 @@ public class Card
 		value = faceValue;
 		point = points;
 	}
+	public Card(String suit, int faceValue) {
+		cardSuit = suit;
+		intValue = faceValue;
+	}
 
 	// modifiers
 		//set methods
 	public void setFace(int faceValue) {
+		intValue = faceValue;
 		value = FACES[faceValue];
 	}
 	public void setSuit(String suit) {
@@ -37,8 +43,8 @@ public class Card
 
   	//accessors
 		//get methods
-	public String getFace() {
-		return value;
+	public int getFace() {
+		return intValue;
 	}
 	public String getSuit() {
 		return cardSuit;
