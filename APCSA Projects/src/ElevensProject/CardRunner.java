@@ -11,8 +11,8 @@ public class CardRunner
 	public static void main( String args[] )
 	{
 		Card one = new Card("NINE","SPADES", 9);
-		out.println(one.getSuit());
-		out.println(one.getFace());
+		out.println(one.suit());
+		out.println(one.rank());
 
 		Card two = new Card("ACE","DIAMONDS", 1);
 		out.println(two);

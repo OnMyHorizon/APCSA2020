@@ -43,17 +43,20 @@ public class Card
 
   	//accessors
 		//get methods
-	public int getFace() {
+	public String rank() {
+		return value;
+	}
+	public int rankInt() {
 		return intValue;
 	}
-	public String getSuit() {
+	public String suit() {
 		return cardSuit;
 	}
-	public int getPoints() {
+	public int pointValue() {
 		return point;
 	}
 	
-	public boolean equal(Card other) {
+	public boolean matches(Card other) {
 		if ((this.cardSuit == other.cardSuit) && (this.value == other.value) && (this.point == other.point)) {
 			return true;
 		}
