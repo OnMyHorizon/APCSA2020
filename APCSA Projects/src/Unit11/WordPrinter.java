@@ -11,5 +11,8 @@ public class WordPrinter
 		
 	public static void printWord(String word, int times)
 	{
+		for (int i = times; i> 0; i--) {
+			System.out.println(word);
+		}
 	}
 }
