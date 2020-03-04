@@ -17,6 +17,7 @@ public class CardRunner
 		Card two = new Card("ACE","DIAMONDS", 1);
 		out.println(two);
 		two.setFace(3);
+		two.setPoints(3);
 		out.println(two);
 
 		Card three = new Card("FOUR","CLUBS", 4);
