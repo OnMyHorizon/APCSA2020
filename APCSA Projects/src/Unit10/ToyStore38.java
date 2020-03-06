@@ -10,16 +10,20 @@ import java.util.Arrays;
 import java.util.Collections;
 import static java.lang.System.*;
 
-public class ToyStore
+public class ToyStore38
 {
 	ArrayList<Toy> toyList;
-	public ToyStore()
+	public ToyStore38()
 	{
 		toyList = new ArrayList<Toy>();
 	}
-	public ToyStore (String toys) {
+	public ToyStore38 (String toys) {
 		toyList = new ArrayList<Toy>();
 		loadToys(toys);
+	}
+	public String myName(){
+		System.out.println("Jensen McKenzie");
+		return "Jensen McKenzie";
 	}
 	public void loadToys( String toys )
 	{
