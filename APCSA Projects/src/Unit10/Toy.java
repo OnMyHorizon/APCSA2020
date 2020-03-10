@@ -12,12 +12,12 @@ public class Toy
 
 	public Toy()
 	{
-		this.count = 1;
+		this.count =1;
 		this.name = "";
 	}
 	public Toy(String name)
 	{
-		this.count = 1;
+		this.count =1;
 		this.name = name;
 	}
 

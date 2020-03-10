@@ -10,57 +10,36 @@ import java.util.Arrays;
 import java.util.Collections;
 import static java.lang.System.*;
 
-public class ToyStore
+public class ToyStore38
 {
 	ArrayList<Toy> toyList;
-	int sorryCt =1;
-	int batCt = 1;
-	int trainCt =1;
-	int teddyCt = 1;
-	int ballCt = 1;
-	public ToyStore()
+	public ToyStore38()
 	{
 		toyList = new ArrayList<Toy>();
 	}
-	public ToyStore (String toys) {
+	public ToyStore38 (String toys) {
+		toyList = new ArrayList<Toy>();
 		loadToys(toys);
+	}
+	public String myName(){
+		System.out.println("Jensen McKenzie");
+		return "Jensen McKenzie";
 	}
 	public void loadToys( String toys )
 	{
-		toyList = new ArrayList<Toy>();
-		ArrayList<String> toyss = new ArrayList<>(Arrays.asList(toys.split(" ")));
-		for(int i = 0; i <= toyss.size()-1; i++)
-		{
-			String name = toyss.get(i);
-			Toy t = new Toy(name);
-			if (getThatToy(name) == null)
-			{
-				toyList.add(t);
-			}
-			else
-			{
-				if(t.getName().equals("sorry")) {
-					sorryCt ++;
-					t.setCount(sorryCt);
+		String[] toyNames = toys.split(" ");
+		for(String name: toyNames){
+			boolean toyInList = false;
+			for(Toy toy: toyList)
+				if( toy.getName().equals(name) ) {
+					toy.setCount(toy.getCount() + 1);
+					toyInList = true;
 				}
-				else if(t.getName().equals("bat")) {
-					batCt ++;
-					t.setCount(batCt);
+				if(toyInList == false) {
+					toyList.add( new Toy(name) );
 				}
-				else if(t.getName().equals("train")) {
-					trainCt ++;
-					t.setCount(trainCt);
-				}
-				else if(t.getName().equals("teddy")) {
-					teddyCt ++;
-					t.setCount(teddyCt);
-				}
-				else if(t.getName().equals("ball")) {
-					ballCt ++;
-					t.setCount(ballCt);
-				}
-			}
 		}
+
 	}
   
   	public Toy getThatToy( String nm )
