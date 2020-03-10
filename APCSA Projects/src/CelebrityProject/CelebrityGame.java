@@ -88,7 +88,7 @@ public class CelebrityGame {
 	}
 
 	/**
-	 * Validates the name of the celebrity. It must have at least 4 characters.
+	 * Validates the name of the celebrity. It must have at least 4 characters
 	 * 
 	 * @param name The name of the Celebrity
 	 * @return If the supplied Celebrity is valid
