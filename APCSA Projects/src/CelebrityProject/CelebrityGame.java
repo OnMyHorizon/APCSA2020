@@ -112,18 +112,18 @@ public class CelebrityGame {
 		boolean validClue = false;
 		if (clue.trim().length() >= 10) {
 			validClue = true;
-			if (type.equalsIgnoreCase("literature")) {
+			if (type.equalsIgnoreCase("Literature")) {
 				String[] temp = clue.split(",");
-				if (temp.length > 1) {
+				if (temp.length > 0) {
 					validClue = true;
 				} else {
 					validClue = false;
 				}
 			}
 			// You will need to add an else if condition here fo or your subclass
-			else if (type.equalsIgnoreCase("movie")) {
+			else if (type.equalsIgnoreCase("Movie")) {
 				String[] temp = clue.split(",");
-				if (temp.length > 1) {
+				if (temp.length > 0) {
 					validClue = true;
 				} else {
 					validClue = false;
