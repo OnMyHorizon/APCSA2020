@@ -38,10 +38,6 @@ public class humidStation {
 	public String getHumidity() {
 		return humidity;
 	}
-	public int getHumidityInt() {
-		int hum = Integer.parseInt(humidity);
-		return hum;
-	}
 	public String toString() {
 		return "Station " + name + " in state "+state+"has a humidity of: " + humidity + "%";
 	}
