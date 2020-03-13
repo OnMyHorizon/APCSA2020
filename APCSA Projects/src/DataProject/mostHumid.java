@@ -1,5 +1,6 @@
 package DataProject;
 
+import core.data.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -20,9 +21,10 @@ public class mostHumid {
 	    		 DataSource ds1 = DataSource.connect("http://weather.gov/xml/current_obs/" + id + ".xml").load();
 	    		 humidStation hs1 = ds1.fetch(humidStation.class,"station_id","relative_humidity");
 	    		 hs.setHumidity(hs1.getHumidity());
-	    		 if (hs.getHumidity() > highest.getHumidity())
+	    		 if (hs.getHumidityInt() > highest.getHumidityInt())
 	    			 highest = hs;
 	    	 }
 	     }
+	     System.out.println("The highest humidity is at " + highest);
 	 }
 }
